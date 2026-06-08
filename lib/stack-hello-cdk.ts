@@ -9,7 +9,9 @@ export class HelloCdkStack extends cdk.Stack {
     const helloCdkLambda = new lambda.Function(this, "HelloCdkLambda", {
       runtime: lambda.Runtime.NODEJS_20_X,
       handler: "index.handler",
-      code: lambda.Code.fromAsset(path.join(__dirname, "./lambda/index.js")),
+      code: lambda.Code.fromAsset(
+        path.join(__dirname, "./lambda/lambda-hello-cdk"),
+      ),
     });
   }
 }
