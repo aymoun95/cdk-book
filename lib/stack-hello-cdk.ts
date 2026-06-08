@@ -8,9 +8,12 @@ export class HelloCdkStack extends cdk.Stack {
     super(scope, id, props);
     const helloCdkLambda = new lambda.Function(this, "HelloCdkLambda", {
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: "index.handler",
+      handler: "index.main",
       code: lambda.Code.fromAsset(
         path.join(__dirname, "./lambda/lambda-hello-cdk"),
+        {
+          exclude: ["node_modules/**"],
+        },
       ),
     });
   }
